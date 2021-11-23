@@ -1,0 +1,32 @@
+#cam-container{
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+.cam-elem{
+	height: auto;
+	min-height: 200px;
+	width: 300px;
+	border: solid 0.5em #FFF;
+	padding:0;
+	margin: 0;
+}
+
+video{
+	width: 100%;
+	height: 100%;
+	margin:0;
+	padding:0;
+}
+
+.cam-controls-container{
+	display: flex;
+    width: 300px;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#toggle-cam-btn{}
+#take-pic-btn{}

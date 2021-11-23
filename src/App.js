@@ -1,25 +1,27 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+
+import Camera from './components/Camera'
+import Gallery from './components/Gallery'
+
+import CameraContextProvider from './contexts/CameraContext';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <CameraContextProvider>
+      <header>
+        <h1>Instablam</h1>
+        <hr></hr>
       </header>
-    </div>
-  );
+      
+      <main>
+        
+        <Camera></Camera>
+        <hr className="section-break"></hr>
+        <Gallery />
+      </main>
+    </CameraContextProvider>
+  )
 }
 
 export default App;
