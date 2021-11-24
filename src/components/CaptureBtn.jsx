@@ -35,11 +35,29 @@ function CaptureBtn() {
 	}
 	
 	async function takePicture(stream) {
+		const width = 414;
+		const height = width / (16/9);
+
+		let video = cameraCtx.videoRef.current;
+		let photo = cameraCtx.photoRef.current;
+
+		photo.width = width;
+		photo.height = height;
+
+		let ctx = photo.getContext('2d');
+
+		ctx.drawImage(video, 0, 0, width, height)
+
+		const dataURL = photo.toDataURL();
+		console.log('dataURL: ',dataURL);
+
+		saveToLocalStorage(dataURL)
+		/*
 		const imageCapture = new ImageCapture(stream)
 		let blob = await imageCapture.takePhoto()
 		
 		const takenPicSrc = URL.createObjectURL(blob)
-		saveToLocalStorage(takenPicSrc)
+		 saveToLocalStorage(takenPicSrc) */
 	}
 
 	function handleClick(){

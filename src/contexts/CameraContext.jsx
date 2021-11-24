@@ -6,6 +6,7 @@ function CameraContextProvider(props) {
 	const [cameraCtx, setCameraCtx] = useState({
 		cameraIsOn: false,
 		videoRef: useRef(null),
+		photoRef: useRef(null),
 		timerIsOn: false,
 		statusMessage: '',
 		stream: {}

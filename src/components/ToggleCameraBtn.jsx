@@ -41,8 +41,7 @@ function ToggleCameraBtn() {
 				videoElem.play();
 				updateCameraCtx({
 					cameraIsOn: true, 
-					stream: stream, 
-					statusMessage: 'Hajhaj!'
+					stream: stream
 				})
 			})
 		} catch (error) {
