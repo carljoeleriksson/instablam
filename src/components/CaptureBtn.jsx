@@ -35,8 +35,8 @@ function CaptureBtn() {
 	}
 	
 	async function takePicture(stream) {
-		const width = 414;
-		const height = width / (16/9);
+		const width = 300;
+		const height = width / (4/3);
 
 		let video = cameraCtx.videoRef.current;
 		let photo = cameraCtx.photoRef.current;

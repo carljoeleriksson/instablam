@@ -17,6 +17,10 @@ function Gallery() {
 		ctx.clearRect(0, 0, photo.width, photo.height)
 	}
 
+useEffect(() => {
+	
+}, [])
+
 	return (
 		<div id='gallery-container'>
 			<canvas ref={cameraCtx.photoRef}></canvas>
