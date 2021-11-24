@@ -9,6 +9,7 @@ import timerIcon from '../assets/timer-icon.png'
 
 import ToggleCameraBtn from "./ToggleCameraBtn";
 import CaptureBtn from "./CaptureBtn";
+import GeoLocBtn from "./GeoLocBtn";
 
 const Camera = () => {
 	const [canUseMd, setCanUseMd] = useState(false)
@@ -32,18 +33,18 @@ const Camera = () => {
 
 			<div className="cam-controls-container">
 				<ToggleCameraBtn />
-				
+				{cameraCtx.cameraIsOn && <GeoLocBtn />}
 				{cameraCtx.cameraIsOn && <CaptureBtn />}
-
+				{cameraCtx.cameraIsOn ? 
 				<button id="self-timer-btn" className="icon-btn">
-					{cameraCtx.cameraIsOn ? 
-						timerIsOn ? 
-							<img src={timerActiveIcon} alt="Deactivate timer" />
-							:
-							<img src={timerIcon} alt="Activate timer" /> 
-					: null 
+					{timerIsOn ? 
+						<img src={timerActiveIcon} alt="Deactivate timer" />
+						:
+						<img src={timerIcon} alt="Activate timer" /> 
+				
 					}
 				</button>
+				: null }
 			</div>
 		</div>)
 }
