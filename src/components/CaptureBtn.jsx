@@ -3,11 +3,13 @@ import React, {useContext} from 'react'
 import camCaptureIcon from '../assets/cam-capture-icon.png'
 
 import {CameraContext} from '../contexts/CameraContext.jsx'
+import {ImageContext} from '../contexts/ImageContext.jsx'
 import {GeoLocContext} from '../contexts/GeoLocContext.jsx'
 
 function CaptureBtn() {
 	const [cameraCtx, updateCameraCtx] = useContext(CameraContext)
 	const [geoLocCtx, updateGeoLocCtx] = useContext(GeoLocContext)
+	const [imageCtx, setImageCtx] = useContext(ImageContext)
 	
 
 	function saveToLocalStorage(imgUrl) {
@@ -21,6 +23,7 @@ function CaptureBtn() {
 			]
 	
 			localStorage.gallery = JSON.stringify(gallery)
+			setImageCtx(gallery.id);
 		} else {
 			const currentGallery = JSON.parse(localStorage.gallery)
 			const imgObj = {
@@ -31,6 +34,7 @@ function CaptureBtn() {
 			let gallery = [imgObj, ...currentGallery]
 			
 			localStorage.gallery = JSON.stringify(gallery)
+			setImageCtx(gallery.id);
 		}
 	}
 	
@@ -52,6 +56,8 @@ function CaptureBtn() {
 		console.log('dataURL: ',dataURL);
 
 		saveToLocalStorage(dataURL)
+		
+		ctx.clearRect(0, 0, photo.width, photo.height)
 		/*
 		const imageCapture = new ImageCapture(stream)
 		let blob = await imageCapture.takePhoto()

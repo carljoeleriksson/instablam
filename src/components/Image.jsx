@@ -1,10 +1,10 @@
 import React from 'react'
 
-function Image(imgProps) {
-	console.log('imgProps: ', imgProps);
-	const imgUrl = imgProps.url.replace("blob:", "")
+function Image(imgObj) {
+	console.log('imgProps: ', imgObj);
+	const imgUrl = imgObj.url
 	console.log('imgUrl: ', imgUrl);
-	const location = imgProps.location
+	const location = imgObj.location
 
 	return (
 		<div className="gallery-img">

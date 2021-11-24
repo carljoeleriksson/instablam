@@ -6,11 +6,13 @@ import Gallery from './components/Gallery'
 
 import CameraContextProvider from './contexts/CameraContext';
 import GeoLocContextProvider from './contexts/GeoLocContext';
+import ImageContextProvider from './contexts/ImageContext';
 
 function App() {
   return (
     <CameraContextProvider>
     <GeoLocContextProvider>
+    <ImageContextProvider>
       <header>
         <h1>Instablam</h1>
         <hr></hr>
@@ -22,6 +24,7 @@ function App() {
         <hr className="section-break"></hr>
         <Gallery />
       </main>
+    </ImageContextProvider>
     </GeoLocContextProvider>
     </CameraContextProvider>
   )
