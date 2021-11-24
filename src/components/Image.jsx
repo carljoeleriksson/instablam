@@ -1,10 +1,16 @@
-import React from 'react'
+import React, {useEffect, useContext} from 'react'
 
-function Image(imgProps) {
-	console.log('imgProps: ', imgProps);
-	const imgUrl = imgProps.url.replace("blob:", "")
+import {ImageContext} from '../contexts/ImageContext.jsx'
+
+function Image() {
+	const [imageCtx, updateImageCtx] = useContext(ImageContext)
+
+	console.log('imgCtx: ', imageCtx);
+	const imgUrl = imageCtx.url
+//	const blob = imgProps.url
+	//const imgUrl = URL.createObjectURL(blob);
 	console.log('imgUrl: ', imgUrl);
-	const location = imgProps.location
+	const location = imageCtx.location
 
 	return (
 		<div className="gallery-img">

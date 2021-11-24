@@ -5,10 +5,12 @@ import Camera from './components/Camera'
 import Gallery from './components/Gallery'
 
 import CameraContextProvider from './contexts/CameraContext';
+import ImageContextProvider from './contexts/ImageContext';
 
 function App() {
   return (
     <CameraContextProvider>
+    <ImageContextProvider>
       <header>
         <h1>Instablam</h1>
         <hr></hr>
@@ -20,6 +22,7 @@ function App() {
         <hr className="section-break"></hr>
         <Gallery />
       </main>
+    </ImageContextProvider>
     </CameraContextProvider>
   )
 }

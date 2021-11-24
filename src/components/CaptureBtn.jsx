@@ -3,10 +3,28 @@ import React, {useContext} from 'react'
 import camCaptureIcon from '../assets/cam-capture-icon.png'
 
 import {CameraContext} from '../contexts/CameraContext.jsx'
+import {ImageContext} from '../contexts/ImageContext.jsx'
+
 
 function CaptureBtn() {
 	const [cameraCtx, updateCameraCtx] = useContext(CameraContext)
+	const [imageCtx, updateImageCtx] = useContext(ImageContext)
 	
+	async function takePicture(stream) {
+		const imageCapture = new ImageCapture(stream)
+		let blob = await imageCapture.takePhoto()
+		
+		const takenPicSrc = URL.createObjectURL(blob)
+		
+		const imgObj = {
+			id: imageCtx.id + 1,
+			url: takenPicSrc,
+			location: "Yorka, Mallis"
+		}
+	
+		//saveToLocalStorage(takenPicSrc)
+	}
+
 	function handleClick(){
 		takePicture(cameraCtx.stream.getVideoTracks()[0])
 	}
@@ -18,7 +36,12 @@ function CaptureBtn() {
 	)
 }
 
-
+/*
+spara takenpicture i imgCtx och låt Image.jsx rendera ut innehålllet där, 
+så fort det kommer nåt nytt. Alltså så fort den variablen ändras så kör den koden.
+useEffect
+*/
+/* 
 function saveToLocalStorage(imgUrl) {
 	if(!localStorage.gallery) {
 		const gallery = [
@@ -29,7 +52,7 @@ function saveToLocalStorage(imgUrl) {
 			}
 		]
 
-		localStorage.gallery = JSON.stringify(gallery)
+		localStorage.gallery = JSON.stringify(gallery)	
 	} else {
 		const currentGallery = JSON.parse(localStorage.gallery)
 		const imgObj = {
@@ -41,14 +64,8 @@ function saveToLocalStorage(imgUrl) {
 		
 		localStorage.gallery = JSON.stringify(gallery)
 	}
-}
+} */
 
-async function takePicture(stream) {
-	const imageCapture = new ImageCapture(stream)
-	let blob = await imageCapture.takePhoto()
-	
-	const takenPicSrc = URL.createObjectURL(blob)
-	saveToLocalStorage(takenPicSrc)
-}
+
 
 export default CaptureBtn

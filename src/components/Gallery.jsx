@@ -1,29 +1,26 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 import './gallery.css'
 
 import Image from './Image'
+import {ImageContext} from '../contexts/ImageContext.jsx'
 
 function Gallery() {
 	const [gallery, setGallery] = useState()
+	const [imageCtx, updateImageCtx] = useContext(ImageContext)
 
 /* 	console.log('gallery: ', gallery); */
 	
 	function galleryList(){
 		console.log('gallery: ', gallery);
-		return gallery.map(imgProps => (
-			<Image {...imgProps} key={imgProps.id} />
+		return gallery.map(e => (
+			<Image key={imageCtx.id} />
 		))
 	}
 
-	useEffect(() => {
-		if(localStorage.gallery){
-			setGallery(JSON.parse(localStorage.gallery))
-		}
-	}, [])
 
 	return (
 		<div id="gallery-container">
-			{gallery && galleryList()}
+			{imageCtx && galleryList()}
 		</div>
 	)
 }
