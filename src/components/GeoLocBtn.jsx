@@ -66,7 +66,7 @@ function GeoLocBtn() {
 
 	return (
 			<button id="geo-loc-btn" className="icon-btn" onClick={handleClick}>
-				<img src={GeoLocIcon} />
+				<img src={GeoLocIcon} alt="Get Geolocation" />
 			</button>
 	)
 }

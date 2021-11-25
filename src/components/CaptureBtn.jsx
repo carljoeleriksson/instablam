@@ -12,12 +12,13 @@ function CaptureBtn() {
 	const [imageCtx, setImageCtx] = useContext(ImageContext)
 	
 
-	function saveToLocalStorage(imgUrl) {
+	function saveToLocalStorage(imgUrl, timeTaken) {
 		if(!localStorage.gallery) {
 			const gallery = [
 				{
 					id: 1,
 					url: imgUrl,
+					time: timeTaken,
 					location: geoLocCtx.geoInfoObj.address + ', ' + geoLocCtx.geoInfoObj.city
 				}
 			]
@@ -29,6 +30,7 @@ function CaptureBtn() {
 			const imgObj = {
 				id: currentGallery.length + 1,
 				url: imgUrl,
+				time: timeTaken,
 				location: geoLocCtx.geoInfoObj.address + ', ' + geoLocCtx.geoInfoObj.city
 			}
 			let gallery = [imgObj, ...currentGallery]
@@ -52,9 +54,11 @@ function CaptureBtn() {
 		ctx.drawImage(video, 0, 0, width, height)
 
 		const dataURL = photo.toDataURL();
-		console.log('dataURL: ',dataURL);
+		/* console.log('dataURL: ',dataURL); */
 
-		saveToLocalStorage(dataURL)
+		const timeTaken = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+
+		saveToLocalStorage(dataURL, timeTaken)
 		
 		ctx.clearRect(0, 0, photo.width, photo.height)
 		/*
@@ -72,7 +76,7 @@ function CaptureBtn() {
 
 	return (
 		<button onClick={handleClick} id="capture-btn" className="icon-btn">
-				<img src={camCaptureIcon} alt="Take picture" />
+				<img src={camCaptureIcon} alt="Capture"/>
 		</button>
 	)
 }

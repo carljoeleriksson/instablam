@@ -1,15 +1,21 @@
 import React from 'react'
 
 function Image(imgObj) {
-	console.log('imgProps: ', imgObj);
+	/* console.log('imgProps: ', imgObj); */
 	const imgUrl = imgObj.url
-	console.log('imgUrl: ', imgUrl);
+	/* console.log('imgUrl: ', imgUrl); */
 	const location = imgObj.location
+	const time = imgObj.time
 
 	return (
 		<div className="gallery-item">
 			<img src={imgUrl} alt="" />
-			<span className="img-location">{location}</span>
+			<div className="img-details">
+				<span className="detail-item img-location">{location}</span>
+				<span className="detail-item">  |  </span>
+				<span className="detail-item img-time">{time}</span>
+			</div>
+			
 		</div>
 	)
 }

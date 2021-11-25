@@ -11,13 +11,6 @@ function Gallery() {
 	const [cameraCtx, updateCameraCtx] = useContext(CameraContext)
 	const [imageCtx, setImageCtx] = useContext(ImageContext)
 /* 	console.log('gallery: ', gallery); */
-	
-	function closePhoto() {
-		let photo = cameraCtx.photoRef.current
-		let ctx = photo.getContext('2d')
-
-		ctx.clearRect(0, 0, photo.width, photo.height)
-	}
 
 	function galleryList() {
 		return gallery.map(imgObj => (

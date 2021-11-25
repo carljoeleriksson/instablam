@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import './camera.css'
 
 import { CameraContext } from '../contexts/CameraContext'
