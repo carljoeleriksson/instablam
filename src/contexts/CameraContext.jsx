@@ -9,7 +9,8 @@ function CameraContextProvider(props) {
 		photoRef: useRef(null),
 		timerIsOn: false,
 		statusMessage: '',
-		stream: {}
+		stream: {},
+		images: []
 	})
 	function updateCameraCtx(updates) {
 		setCameraCtx({

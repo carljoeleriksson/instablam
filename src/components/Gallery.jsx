@@ -11,7 +11,7 @@ function Gallery() {
 	const [cameraCtx, updateCameraCtx] = useContext(CameraContext)
 	const [imageCtx, setImageCtx] = useContext(ImageContext)
 /* 	console.log('gallery: ', gallery); */
-
+	console.log('cameraCtx.images: ', cameraCtx.images[0]);
 	function galleryList() {
 		return gallery.map(imgObj => (
 			<Image {...imgObj} key={imgObj.id} />
@@ -26,7 +26,7 @@ function Gallery() {
 
 	return (
 		<div id='gallery-container'>
-			
+			<img id="blob-bild" src={cameraCtx.images[0]} alt="" />
 			{gallery && galleryList()}	
 			<canvas className="hidden" ref={cameraCtx.photoRef}></canvas>
 		</div>
