@@ -1,6 +1,6 @@
 import React, {useContext} from 'react'
 
-import GeoLocIcon from '../assets/geoloc-icon.png'
+import GeoLocIcon from '../assets/svg/geoloc-icon.svg'
 
 import {GeoLocContext} from '../contexts/GeoLocContext.jsx'
 

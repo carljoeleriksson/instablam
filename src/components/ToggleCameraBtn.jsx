@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 
-import camActivateIcon from '../assets/cam-activate-icon.png'
-import camDeactivateIcon from '../assets/cam-deactivate-icon.png'
+import camActivateIcon from '../assets/svg/cam-activate-icon.svg'
+import camDeactivateIcon from '../assets/svg/cam-deactivate-icon.svg'
 
 import {CameraContext} from '../contexts/CameraContext.jsx'
 
@@ -51,15 +51,13 @@ function ToggleCameraBtn() {
 	}
 
 	return (
-		<div>
-			<button id="toggle-cam-btn" className="icon-btn" onClick={handleCamToggle}>
+			<button id="toggle-cam-btn" className={'icon-btn' + ' ' + (!cameraCtx.cameraIsOn ? 'cam-activate-btn' : '')} onClick={handleCamToggle}>
 				{cameraCtx.cameraIsOn ? 
 					<img src={camDeactivateIcon} alt="Turn camera off" />
 				:
-					<img src={camActivateIcon} alt="Turn camera on" />
+					<img id="cam-activate-icon" src={camActivateIcon} alt="Turn camera on" />
 				}
 			</button>
-		</div>
 	)
 }
 

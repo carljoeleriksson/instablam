@@ -1,6 +1,6 @@
 import React, {useContext} from 'react'
 
-import camCaptureIcon from '../assets/cam-capture-icon.png'
+import camCaptureIcon from '../assets/svg/cam-capture-icon.svg'
 
 import {CameraContext} from '../contexts/CameraContext.jsx'
 import {ImageContext} from '../contexts/ImageContext.jsx'
@@ -32,13 +32,12 @@ function CaptureBtn() {
 				location: geoLocCtx.geoInfoObj.address + ', ' + geoLocCtx.geoInfoObj.city
 			}
 			let gallery = [imgObj, ...currentGallery]
-			
 			localStorage.gallery = JSON.stringify(gallery)
-			setImageCtx(gallery.id);
+			setImageCtx(gallery);
 		}
 	}
 	
-	async function takePicture(stream) {
+	async function takePicture() {
 		const width = 300;
 		const height = width / (4/3);
 

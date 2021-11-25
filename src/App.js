@@ -24,6 +24,11 @@ function App() {
         <hr className="section-break"></hr>
         <Gallery />
       </main>
+      <footer>
+        <span id="copyright">Instablam &copy;</span>
+        <br/>
+        <span>Web by Joel Eriksson</span>
+      </footer>
     </ImageContextProvider>
     </GeoLocContextProvider>
     </CameraContextProvider>

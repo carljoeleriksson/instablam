@@ -4,8 +4,8 @@ import './camera.css'
 import { CameraContext } from '../contexts/CameraContext'
 
 
-import timerActiveIcon from '../assets/timer-active-icon.png'
-import timerIcon from '../assets/timer-icon.png'
+import timerActiveIcon from '../assets/svg/timer-active-icon.svg'
+import timerIcon from '../assets/svg/timer-icon.svg'
 
 import ToggleCameraBtn from "./ToggleCameraBtn";
 import CaptureBtn from "./CaptureBtn";
@@ -28,11 +28,12 @@ const Camera = () => {
 	return (
 		<div id="cam-container">
 			<div className="cam-elem">
+				{!cameraCtx.cameraIsOn ? <ToggleCameraBtn /> : null}
 				{canUseMd ? <video ref={cameraCtx.videoRef}></video> : null}
 			</div>
 
 			<div className="cam-controls-container">
-				<ToggleCameraBtn />
+				{cameraCtx.cameraIsOn && <ToggleCameraBtn />}
 				{cameraCtx.cameraIsOn && <GeoLocBtn />}
 				{cameraCtx.cameraIsOn && <CaptureBtn />}
 				{cameraCtx.cameraIsOn ? 
@@ -41,7 +42,6 @@ const Camera = () => {
 						<img src={timerActiveIcon} alt="Deactivate timer" />
 						:
 						<img src={timerIcon} alt="Activate timer" /> 
-				
 					}
 				</button>
 				: null }

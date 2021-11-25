@@ -7,7 +7,7 @@ function Image(imgObj) {
 	const location = imgObj.location
 
 	return (
-		<div className="gallery-img">
+		<div className="gallery-item">
 			<img src={imgUrl} alt="" />
 			<span className="img-location">{location}</span>
 		</div>
