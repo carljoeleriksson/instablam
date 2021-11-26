@@ -6,6 +6,7 @@ margin: 0;
 }
 
 .cam-elem{
+	display: flex;
 	height: auto;
 	min-height: 200px;
 	width: 300px;
@@ -49,3 +50,13 @@ video{
 #self-timer-btn{
 	grid-column: 5;
 }
+
+#self-timer-elem{
+    position: absolute;
+    z-index: 1000;
+    top: 8rem;
+    font-family: 'Staatliches', cursive;
+    font-size: 8em;
+    color: rgba(255, 255, 255, 0.7);
+}
+

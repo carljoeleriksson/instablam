@@ -11,24 +11,42 @@ function Gallery() {
 	const [cameraCtx, updateCameraCtx] = useContext(CameraContext)
 	const [imageCtx, setImageCtx] = useContext(ImageContext)
 /* 	console.log('gallery: ', gallery); */
-	console.log('cameraCtx.images: ', cameraCtx.images[0]);
 	function galleryList() {
 		return gallery.map(imgObj => (
 			<Image {...imgObj} key={imgObj.id} />
 		))
+		
 	}
 
 	useEffect(() => {
 		if(localStorage.gallery){
 			setGallery(JSON.parse(localStorage.gallery))
+		} else {
+			const defaultGallery = [
+				{
+						id: 1,
+						url: 'img/default-img_1.jpg',
+						time: '20:01',
+						location: 'Reichenberger Straße, Berlin'
+				},
+				{
+						id: 2,
+						url: 'img/default-img_2.jpg',
+						time: '10:31',
+						location: 'Ocean Ave, Los Angeles'
+				}
+			]
+
+			localStorage.gallery = JSON.stringify(defaultGallery)
+			setGallery(JSON.parse(localStorage.gallery))
+			console.log('gallery: w defaultGallery', gallery);
+			setImageCtx(gallery); //a state used only to make the Gallery.jsx update properly
 		}
 	}, [imageCtx])
 
 	return (
 		<div id='gallery-container'>
-			<img id="blob-bild" src={cameraCtx.images[0]} alt="" />
 			{gallery && galleryList()}	
-			<canvas className="hidden" ref={cameraCtx.photoRef}></canvas>
 		</div>
 	)
 }

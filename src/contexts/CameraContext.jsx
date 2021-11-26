@@ -7,10 +7,10 @@ function CameraContextProvider(props) {
 		cameraIsOn: false,
 		videoRef: useRef(null),
 		photoRef: useRef(null),
-		timerIsOn: false,
+		selfTimerOn: false,
+		selfTimerSec: null,
 		statusMessage: '',
-		stream: {},
-		images: []
+		stream: {}
 	})
 	function updateCameraCtx(updates) {
 		setCameraCtx({

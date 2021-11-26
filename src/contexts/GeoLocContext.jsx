@@ -5,7 +5,8 @@ export const GeoLocContext = createContext();
 function GeoLocContextProvider(props) {
 	const [geoLocCtx, setGeoLocCtx] = useState({
 		hasGeoLoc: false,
-		geoInfoObj: {}
+		geoInfoObj: {},
+		status: ''
 	});
 
 	function updateGeoLocCtx(updates) {

@@ -24,6 +24,13 @@ function ToggleCameraBtn() {
 		const videoElem = cameraCtx.videoRef.current
 		updateCameraCtx({cameraIsOn: false})
 		videoElem.srcObject = null
+
+		if( !cameraCtx.stream )
+		return;
+
+		// Hämta alla spår från kameraströmmen och avsluta dem var och en
+		let tracks = cameraCtx.stream.getTracks()
+		tracks.forEach(track => track.stop())
 	}
 	
 	async function cameraOn() {
@@ -50,14 +57,15 @@ function ToggleCameraBtn() {
 		}
 	}
 
-	return (
-			<button id="toggle-cam-btn" className={'icon-btn' + ' ' + (!cameraCtx.cameraIsOn ? 'cam-activate-btn' : '')} onClick={handleCamToggle}>
+	return (<>
+			<button id="toggle-cam-btn" className={"icon-btn" + (!cameraCtx.cameraIsOn ? " " + 'cam-activate-btn' : "")} onClick={handleCamToggle}>
 				{cameraCtx.cameraIsOn ? 
 					<img src={camDeactivateIcon} alt="Turn camera off" />
 				:
 					<img id="cam-activate-icon" src={camActivateIcon} alt="Turn camera on" />
 				}
 			</button>
+			</>
 	)
 }
 

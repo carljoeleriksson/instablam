@@ -4,6 +4,7 @@ import './camera.css'
 import { CameraContext } from '../contexts/CameraContext'
 
 
+
 import timerActiveIcon from '../assets/svg/timer-active-icon.svg'
 import timerIcon from '../assets/svg/timer-icon.svg'
 
@@ -25,10 +26,19 @@ const Camera = () => {
 		setCanUseMd('mediaDevices' in navigator)
 	}, [])
 
+	function toggleSelfTimer(){
+		if(!cameraCtx.selfTimerOn){
+			updateCameraCtx({selfTimerOn: true})
+		} else {
+			updateCameraCtx({selfTimerOn: false})
+		}
+	}
+
 	return (
 		<div id="cam-container">
+			{cameraCtx.selfTimerOn ? <span id="self-timer-elem">{cameraCtx.selfTimerSec}</span> : null}
 			<div className="cam-elem">
-				{!cameraCtx.cameraIsOn ? <ToggleCameraBtn /> : null}
+				{!cameraCtx.cameraIsOn ? <ToggleCameraBtn /> : null}				
 				{canUseMd ? <video ref={cameraCtx.videoRef}></video> : null}
 			</div>
 
@@ -37,8 +47,8 @@ const Camera = () => {
 				{cameraCtx.cameraIsOn && <GeoLocBtn />}
 				{cameraCtx.cameraIsOn && <CaptureBtn />}
 				{cameraCtx.cameraIsOn ? 
-				<button id="self-timer-btn" className="icon-btn">
-					{timerIsOn ? 
+				<button id="self-timer-btn" className="icon-btn" onClick={toggleSelfTimer}>
+					{cameraCtx.selfTimerOn ? 
 						<img src={timerActiveIcon} alt="Deactivate timer" />
 						:
 						<img src={timerIcon} alt="Activate timer" /> 

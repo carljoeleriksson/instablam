@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 
 import Camera from './components/Camera'
+import MessageElem from './components/MessageElem'
 import Gallery from './components/Gallery'
 
 import CameraContextProvider from './contexts/CameraContext';
@@ -20,7 +21,8 @@ function App() {
       
       <main>
         
-        <Camera></Camera>
+        <Camera />
+        <MessageElem />
         <hr className="section-break"></hr>
         <Gallery />
       </main>
